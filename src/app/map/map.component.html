@@ -1,0 +1,43 @@
+<div class="container mt-2">
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight">
+          <img src="assets/paris.png" width="75px">
+        </div>
+        <div class="p-2 bd-highlight">
+          <mat-form-field appearance="fill ">
+            <mat-label>Je cherche à Paris :</mat-label>
+            <mat-select [(ngModel)]="selectedValue">
+              <mat-option *ngFor="let item of places" [value]="item.value">
+                {{ item.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="p-2 bd-highlight">
+          <button (click)="searchPlace()" type="button" class="btn btn-primary">
+            <span class="material-icons"> search </span>
+          </button>
+        </div>
+        <div class="p-2 bd-highlight">
+          <button type="button" class="btn btn-warning">
+            <span (click)="refresh()" class="material-icons"> refresh </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div
+        [hidden]="alertMessageHidden"
+        class="alert alert-primary text-center"
+        role="alert"
+      >
+        {{ alertMessage }}
+      </div>
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
